@@ -1,11 +1,8 @@
 #include "internet.h"
 
 void connectToWiFi(){
-    const char* ssid = "moto g31";
-    const char* password = "11111111";
-
     WiFi.mode(WIFI_STA);
-    WiFi.begin(ssid,password);
+    WiFi.begin(SSID,PASSWORD);
     Serial.print("\nConnecting");
     while (WiFi.status() != WL_CONNECTED)
     {
