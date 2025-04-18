@@ -1,5 +1,6 @@
 // eink datasheet: https://cz.mouser.com/datasheet/2/1089/1P233_00_02_E2417JS0D1_20211108-3132823.pdf
 // ein library: GxEPD2 - https://github.com/ZinggJM/GxEPD2
+// podpora češtiny https://github.com/petrbrouzda/fontconvert8-iso8859-2
 
 #include <Arduino.h>
 //#include <WiFi.h>
