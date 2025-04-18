@@ -26,9 +26,9 @@
      inkscape:document-units="mm"
      showgrid="false"
      showguides="true"
-     inkscape:zoom="0.53354917"
-     inkscape:cx="-268.95366"
-     inkscape:cy="260.51957"
+     inkscape:zoom="0.75455247"
+     inkscape:cx="263.06984"
+     inkscape:cy="516.86266"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
      inkscape:window-x="-8"
@@ -37,6 +37,18 @@
      inkscape:current-layer="layer1" />
   <defs
      id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient16886">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0.81388891"
+         id="stop16882" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0.93333334"
+         id="stop16884" />
+    </linearGradient>
     <linearGradient
        id="linearGradient2582"
        inkscape:swatch="solid">
@@ -55,6 +67,16 @@
        y2="101.41013"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.95741667,0,0,0.95741667,1.732145,0.72499084)" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient16886"
+       id="radialGradient16888"
+       cx="100"
+       cy="100"
+       fx="100"
+       fy="100"
+       r="47.5"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <g
      inkscape:label="Layer 1"
@@ -106,7 +128,7 @@
        d="M 5.0000012,52.500001 195,52.500032"
        id="path3557" />
     <circle
-       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:10;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       style="opacity:1;fill:url(#radialGradient16888);fill-opacity:1;fill-rule:nonzero;paint-order:normal;stroke:#000000;stroke-opacity:1;stroke-width:5;stroke-dasharray:none"
        id="path8804"
        cy="100"
        cx="100"
