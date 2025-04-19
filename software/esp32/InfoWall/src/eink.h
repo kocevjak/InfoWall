@@ -16,7 +16,7 @@
 
 void display_init();
 void draw_border();
-void update_holiday(String name);
-void update_date();
-void update_weaather();
-void update_timetable();
+void display_update_holiday(String name);
+void display_update_date(String date);
+void display_update_weaather(int min, int max);
+void display_update_timetable();

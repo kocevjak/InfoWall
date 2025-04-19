@@ -16,33 +16,33 @@ void draw_border(){
     display.drawRect(0,0,400,300,GxEPD_BLACK);
     display.drawLine(0,10+line_h,400,10+line_h,GxEPD_BLACK);
     display.drawLine(120,0,120,300,GxEPD_BLACK);
-    update_date();
+    //update_date();
     //update_holiday();
-    update_weaather();
-    update_timetable();
+    //display_update_weaather();
+    display_update_timetable();
     display.display();
 }
 
-void update_holiday(String name){
+void display_update_holiday(String name){
     display.setCursor(125,5+line_h);
     display.print("Svatek ma: ");
     display.print(name);
 }
 
-void update_date(){
+void display_update_date(String date){
     display.setCursor(5,5+line_h);
-    display.print("28.1.2025");
+    display.print(date);
 }
 
-void update_weaather(){
+void display_update_weaather(int min, int max){
     display.drawCircle(60,80,50,GxEPD_RED);
     display.setCursor(5,135+line_h);
-    display.print("min: 10°C");
+    display.print("min: " + String(min) + " C");
     display.setCursor(5,135+2*line_h+5);
-    display.print("max: 20°C");
+    display.print("max: " + String(max) + " C");
 }
 
-void update_timetable(){
+void display_update_timetable(){
     display.setCursor(125,10+line_h+5+line_h);
     display.print("timetable");
 }

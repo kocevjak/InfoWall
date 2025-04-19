@@ -16,7 +16,11 @@ void setup() {
   Serial.begin(9600);
   display_init();
   connectToWiFi();
-  update_holiday(get_holiday());
+  update_day();
+  display_update_holiday(get_holiday());
+  display_update_date(get_date());
+  update_weather();
+  display_update_weaather(get_temperature_min(),get_temperature_max());
   draw_border();
 }
 

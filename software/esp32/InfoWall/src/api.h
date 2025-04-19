@@ -2,7 +2,12 @@
 #include <ArduinoJson.h>
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
+#include "password.h"
 
 void get_timetable();
-void get_date();
 String get_holiday();
+String get_date();
+void update_day();
+void update_weather();
+int get_temperature_max();
+int get_temperature_min();
