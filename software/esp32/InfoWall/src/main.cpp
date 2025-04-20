@@ -27,7 +27,12 @@ void update_display(){
 
 void IRAM_ATTR onTimer(){
   timer_update_display = true; // Set the flag to update the display
-  //timerAlarmDisable(timer); // Disable the timer to prevent re-entrance
+  timerAlarmDisable(timer); // Disable the timer to prevent re-entrance
+}
+
+void set_Timer(int minutes){
+  timerAlarmWrite(timer, minutes * 60000000, true); // Set alarm to trigger every X seconds
+  timerAlarmEnable(timer); // Enable the alarm
 }
 
 void setup() {
@@ -36,10 +41,9 @@ void setup() {
   connectToWiFi();
   update_display();
   Serial.println("Display updated");
-  timer = timerBegin(2, 80, true); // Timer 0, prescaler 80 (1us)
+  timer = timerBegin(0, 80, true); // Timer 0, prescaler 80 (1us)
   timerAttachInterrupt(timer, &onTimer, true); // Attach the interrupt function
-  timerAlarmWrite(timer, 60000000, true); // Set alarm to trigger every 10 seconds
-  timerAlarmEnable(timer); // Enable the alarm
+  set_Timer(get_next_update()); // Set the timer to trigger every 1 minute
 }
 
 void loop() {
@@ -48,5 +52,7 @@ void loop() {
     Serial.println("Updating display...");
     timer_update_display = false;
     update_display();
+    set_Timer(get_next_update()); // Reset the timer for the next update
+    Serial.println(get_next_update());
   }
 }

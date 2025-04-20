@@ -79,3 +79,8 @@ String parse_timetable_time(String timestamp){
     String time = timestamp.substring(11,16);
     return time;
 }
+
+int get_next_update(){
+    //return time for next update in minutes
+    return timetable[0][0]["departure"]["minutes"].as<int>();
+}
