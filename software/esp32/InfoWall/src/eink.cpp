@@ -19,7 +19,7 @@ void draw_border(){
     //update_date();
     //update_holiday();
     //display_update_weaather();
-    display_update_timetable();
+    //display_update_timetable();
     display.display();
 }
 
@@ -42,7 +42,7 @@ void display_update_weaather(int min, int max){
     display.print("max: " + String(max) + " C");
 }
 
-void display_update_timetable(){
+void display_update_timetable(String timetable){
     display.setCursor(125,10+line_h+5+line_h);
-    display.print("timetable");
+    display.print(timetable);
 }

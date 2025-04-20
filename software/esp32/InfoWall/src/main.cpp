@@ -21,9 +21,9 @@ void setup() {
   display_update_date(get_date());
   update_weather();
   display_update_weaather(get_temperature_min(),get_temperature_max());
-  draw_border();
   update_timetable();
-  Serial.println(get_timetable());
+  display_update_timetable(get_timetable());
+  draw_border();
 }
 
 

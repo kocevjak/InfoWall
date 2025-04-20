@@ -65,5 +65,9 @@ void update_timetable(){
 }
 
 String get_timetable(){
-    return timetable[1]["departure_time"].as<String>();
+    String timetable_string = "";
+    timetable_string += "Odjezd: " + timetable[0]["departure_time"].as<String>() + "\n";
+    timetable_string += "Odjezd: " + timetable[1]["departure_time"].as<String>() + "\n";
+    timetable_string += "Odjezd: " + timetable[2]["departure_time"].as<String>() + "\n";
+    return timetable_string;
 }
