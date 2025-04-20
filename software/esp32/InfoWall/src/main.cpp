@@ -10,12 +10,11 @@
 #include "internet.h"
 #include "api.h"
 
+hw_timer_t *timer = NULL; // Create a timer
+bool timer_update_display = false;
 
 
-void setup() {
-  Serial.begin(9600);
-  display_init();
-  connectToWiFi();
+void update_display(){
   update_day();
   display_update_holiday(get_holiday());
   display_update_date(get_date());
@@ -26,7 +25,28 @@ void setup() {
   draw_border();
 }
 
+void IRAM_ATTR onTimer(){
+  timer_update_display = true; // Set the flag to update the display
+  //timerAlarmDisable(timer); // Disable the timer to prevent re-entrance
+}
+
+void setup() {
+  Serial.begin(9600);
+  display_init();
+  connectToWiFi();
+  update_display();
+  Serial.println("Display updated");
+  timer = timerBegin(2, 80, true); // Timer 0, prescaler 80 (1us)
+  timerAttachInterrupt(timer, &onTimer, true); // Attach the interrupt function
+  timerAlarmWrite(timer, 60000000, true); // Set alarm to trigger every 10 seconds
+  timerAlarmEnable(timer); // Enable the alarm
+}
 
 void loop() {
-  //draw_border();
+  if (timer_update_display)
+  {
+    Serial.println("Updating display...");
+    timer_update_display = false;
+    update_display();
+  }
 }

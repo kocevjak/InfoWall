@@ -13,6 +13,8 @@ void display_init(){
 }
 
 void draw_border(){
+    //display.clearScreen();
+    //display.fillScreen(GxEPD_WHITE);
     display.drawRect(0,0,400,300,GxEPD_BLACK);
     display.drawLine(0,10+line_h,400,10+line_h,GxEPD_BLACK);
     display.drawLine(120,0,120,300,GxEPD_BLACK);
