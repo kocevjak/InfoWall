@@ -64,10 +64,10 @@ void update_timetable(){
     http.end();
 }
 
-String get_timetable(){
-    String timetable_string = "";
-    timetable_string += "Odjezd: " + timetable[0]["departure_time"].as<String>() + "\n";
-    timetable_string += "Odjezd: " + timetable[1]["departure_time"].as<String>() + "\n";
-    timetable_string += "Odjezd: " + timetable[2]["departure_time"].as<String>() + "\n";
+String* get_timetable(){
+    String* timetable_string = new String[3];
+    timetable_string[0] = "Odjezd: " + timetable[0]["departure_time"].as<String>();
+    timetable_string[1] = "Odjezd: " + timetable[1]["departure_time"].as<String>();
+    timetable_string[2] = "Odjezd: " + timetable[2]["departure_time"].as<String>();
     return timetable_string;
 }

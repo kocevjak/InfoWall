@@ -42,7 +42,11 @@ void display_update_weaather(int min, int max){
     display.print("max: " + String(max) + " C");
 }
 
-void display_update_timetable(String timetable){
+void display_update_timetable(String* timetable){
     display.setCursor(125,10+line_h+5+line_h);
-    display.print(timetable);
+    display.println(timetable[0]);
+    display.setCursor(125,display.getCursorY());
+    display.println(timetable[1]);
+    display.setCursor(125,display.getCursorY());
+    display.println(timetable[2]);
 }

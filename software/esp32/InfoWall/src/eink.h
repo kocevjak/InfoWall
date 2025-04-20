@@ -19,4 +19,4 @@ void draw_border();
 void display_update_holiday(String name);
 void display_update_date(String date);
 void display_update_weaather(int min, int max);
-void display_update_timetable(String timetable);
+void display_update_timetable(String* timetable);
