@@ -12,4 +12,4 @@ int get_temperature_max();
 int get_temperature_min();
 void update_timetable();
 String* get_timetable();
-
+String parse_timetable_time(String timestamp);

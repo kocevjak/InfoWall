@@ -1,6 +1,7 @@
 #include "api.h"
 
-String timetable_api_url = "https://api.golemio.cz/v2/gtfs/stoptimes/U1754Z2?date=2025-04-20&from=13%3A41%3A00&includeStop=false&limit=3&offset=0";   //vrací spoje které pojednou přes danou zastávku
+String timetable_api_url_old = "https://api.golemio.cz/v2/gtfs/stoptimes/U1754Z2?date=2025-04-20&from=13%3A41%3A00&includeStop=false&limit=3&offset=0";   //vrací spoje které pojednou přes danou zastávku
+String timetable_api_url = "https://api.golemio.cz/v2/public/departureboards?stopIds=%7B%220%22%3A%20%5B%22U1754Z2%22%5D%7D&limit=3&minutesAfter=360";
 String wheather_api_url = "https://api.openweathermap.org/data/2.5/forecast/daily?q=Prague&cnt=1&units=metric&lang=cz&appid=" + String(OpenWeatherApiKey); //vrací předpověd počasí na 7 dní
 
 DynamicJsonDocument svatky(2048);
@@ -60,14 +61,21 @@ void update_timetable(){
         api_data = http.getString();
         //Serial.println(api_data);
         deserializeJson(timetable,api_data);
+        //Serial.println("\n" + timetable[0][0]["departure"]["timestamp_scheduled"].as<String>());
     }
     http.end();
 }
 
 String* get_timetable(){
     String* timetable_string = new String[3];
-    timetable_string[0] = "Odjezd: " + timetable[0]["departure_time"].as<String>();
-    timetable_string[1] = "Odjezd: " + timetable[1]["departure_time"].as<String>();
-    timetable_string[2] = "Odjezd: " + timetable[2]["departure_time"].as<String>();
+    for (int i = 0; i < 3; i++)
+    {
+        timetable_string[i] = timetable[0][i]["route"]["short_name"].as<String>() + " odjezd: " + parse_timetable_time(timetable[0][i]["departure"]["timestamp_scheduled"].as<String>());
+    }
     return timetable_string;
+}
+
+String parse_timetable_time(String timestamp){
+    String time = timestamp.substring(11,16);
+    return time;
 }
