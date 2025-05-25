@@ -31,7 +31,8 @@ String get_date(){
     /*
     todo change format of date to dd.mm.yyyy
     */
-    return svatky["date"].as<String>();
+    String date = svatky["dayNumber"].as<String>() + "." + svatky["monthNumber"].as<String>() + "." + svatky["year"].as<String>();
+    return date;
 }
 
 void update_weather(){
@@ -82,5 +83,6 @@ String parse_timetable_time(String timestamp){
 
 int get_next_update(){
     //return time for next update in minutes
+    update_timetable();
     return timetable[0][0]["departure"]["minutes"].as<int>();
 }

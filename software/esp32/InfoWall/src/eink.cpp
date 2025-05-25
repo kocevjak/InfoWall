@@ -1,6 +1,13 @@
 #include "eink.h"
 GxEPD2_3C<GxEPD2_420c_Z21, GxEPD2_420c_Z21::HEIGHT> display(GxEPD2_420c_Z21(SS, DC, RST, BUSY)); //400x300
 
+void display_clear(){
+    display.clearScreen();
+    display.fillScreen(GxEPD_WHITE);
+    display.setCursor(0,0);
+    display.setTextColor(GxEPD_BLACK);
+}
+
 void display_init(){
     pinMode(POWER,OUTPUT);
     digitalWrite(POWER,HIGH);
@@ -37,10 +44,12 @@ void display_update_date(String date){
 }
 
 void display_update_weaather(int min, int max){
-    display.drawCircle(60,80,50,GxEPD_RED);
-    display.setCursor(5,135+line_h);
-    display.print("min: " + String(min) + " C");
-    display.setCursor(5,135+2*line_h+5);
+    //display.drawCircle(60,80,50,GxEPD_RED);
+    //display.setCursor(5,135+line_h);
+    display.setCursor(5,10+line_h+5+line_h);
+    display.println("min: " + String(min) + " C");
+    //display.setCursor(5,135+2*line_h+5);
+    display.setCursor(5,display.getCursorY());
     display.print("max: " + String(max) + " C");
 }
 
