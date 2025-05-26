@@ -40,8 +40,8 @@ void set_Timer(int minutes){
 
 void setup() {
   Serial.begin(9600);
-  display_init();
   connectToWiFi();
+  display_init();
   update_display();
   Serial.println("Display updated");
   timer = timerBegin(0, 80, true); // Timer 0, prescaler 80 (1us)
